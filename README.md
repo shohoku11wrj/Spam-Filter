@@ -32,4 +32,4 @@ I have also wirte a small scripts "./roc-plot/draw_roc.rb" to convert <i>probabi
 
 
 
-Thanks to my teammate Hang Zhang, who has helped during the project.
+Thanks to my teammate Hang Zhang, who has helped in ROC theory and Logistic Regression part during the project.

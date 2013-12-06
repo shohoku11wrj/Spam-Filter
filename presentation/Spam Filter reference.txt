@@ -1,0 +1,36 @@
+﻿基于AdaBoost的最小风险贝叶斯的垃圾邮件过滤算法
+http://wenku.baidu.com/view/8fb088ef172ded630b1cb67e.html
+
+A comparative study for content-based dynamic spam classification using four machine learning algorithms
+http://ac.els-cdn.com/S0950705108000026/1-s2.0-S0950705108000026-main.pdf?_tid=b120aed4-5985-11e3-94fc-00000aacb35e&acdnat=1385791828_6d5c6319ffc4d5d2781cdf2677f236ff
+
+A review of machine learning approaches to Spam filtering
+http://ac.els-cdn.com/S095741740900181X/1-s2.0-S095741740900181X-main.pdf?_tid=b827a246-5985-11e3-a1ac-00000aab0f6b&acdnat=1385791840_29528d3c40f33ae35eabae7a848608bd
+
+基于TF*IDF的垃圾邮件过滤特征选择改进算法
+http://wenku.baidu.com/view/dd96de320b4c2e3f57276388.html
+
+Learning at Low False Positive Rates
+http://www.ceas.cc/2006/11.pdf
+
+Third Conference on Email and Anti-Spam, CEAS 2006, July 27-28, 2006, Mountain View, California
+http://www.ceas.cc/2006/
+
+基于Logistic回归的垃圾邮件过滤应用研究
+http://wenku.baidu.com/view/43388401a6c30c2259019e20.html?pn=1
+
+基于Logistic回归的中文垃圾邮件过滤方法
+http://www.docin.com/p-160363677.html
+
+
+
+[1] A plan for spam (2002) Paul Graham
+[2] Online discriminative spam filter training (2006) Joshua Goodman, Wen-tau Yih. The Conference on Email and Anti-Spam 2006
+[3] An empirical study of three machine learning methods for spam filtering (2006) Chih-Chin Lai
+[4] Improved feature selection algorithm in spam filtering based on TF*IDF 基于TF*IDF的垃圾邮件过滤特征选择改进算法 (2009) Chen Qi, Wu Zhao-hui, Yao Fang, Song Xiu-rong, Zhang Fu-zhi. Yanshan University, China
+[5] Study on applications of spam filtering based on logistic regression 基于Logistic回归的垃圾邮件过滤应用研究 (2008) Wang Qing-xing. Zhejiang University, China
+[6] Filtering Chinese Spam Email Using Logistic Regression 基于Logistic回归的中文垃圾邮件过滤方法 (2008) Wang Qin-xing, Xu Cong-fu, He Jun. Zhejiang University, China
+[7] Bayesian Inference and Web Application: Introduction to the Theory & Spam Filtering贝叶斯推断及其互联网应用: 定理简介 和 过滤垃圾邮件 (2011) Ruan Yi-feng
+[8] Application of TF-IDF and Cosine Similarity (2013) Ruan Yi-feng
+[9] ruby-plot, an open source program to draw curves written by Ruby (2010) Vorgrimmler. University of Freiburg,  Germany
+

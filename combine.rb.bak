@@ -1,0 +1,190 @@
+#!/usr/bin/ruby
+=begin
+  This file is used to *combine* the result of another filter,
+  which has stronger reliability than Bayesian Filter,
+  but whose working area is limited in some certain part among the whole data,
+  *to* those result of the Bayesian Filter.
+  Then we can find a better solution on those certain part, 
+  then use Bayesian on the left part.
+=end
+
+require 'tempfile'
+
+@total_line = 0
+@p1 = Array.new() {0.00}
+@verify = Array.new() {0.00}
+
+def combine(p1, p2)
+  readFileIntoP(p1)
+
+  wirtePIntoFile(p2)
+end
+
+def readFileIntoP(filename) # filename = p_zh.txt
+  @total_line = File.open(filename, "r").each_line.count
+  @p1 = Array.new(@total_line) {0.00}
+  @verify = Array.new(@total_line) {0.00}
+
+  lineCount = 0
+  File.open(filename, "r").each_line do |line|
+    @p1[lineCount] = line.to_f
+    lineCount += 1
+  end
+end
+
+def wirtePIntoFile(filename)  # filename = decision_label_combined.txt
+  lineCount = 0
+
+  t_file = File.open("./decision_label_combined.txt", "w")
+  File.open(filename, 'r') do |f|
+    f.each_with_index {|line, index| 
+      if @p1[index] == 1.0
+        # if line.to_f < 0.9 && line.to_f > 0.1
+        #   puts @p1[index].to_s + ", " + line
+        # end
+        t_file.puts @p1[index]
+        @verify[index] = @p1[index]
+      elsif @p1[index] == -1.0
+        t_file.puts 0.0
+        @verify[index] = @p1[index]
+      else
+        t_file.puts line
+        @verify[index] = line.to_f
+      end
+    }
+  end
+  t_file.close
+end
+
+def simple_accuracy
+  correct = 0
+  wrong = 0
+
+  lineCount = 0
+  File.open("./true_label.txt", "r").each_line do |line|
+    if @verify[lineCount] < 0.9 then
+        if line.to_f == -1 then
+            correct += 1
+        else
+            wrong += 1
+        end
+    else
+        if line.to_f == 1 then
+            correct += 1
+        else
+            wrong += 1
+        end
+    end
+    lineCount += 1
+  end
+
+  @Accuracy = 0.0
+  @Accuracy = correct.to_f * 100 / (correct + wrong)
+
+  puts "combined simple accuracy: #{@Accuracy}%"
+end
+
+# exam the accuracy of ZhangHang's linear classifier
+def linearAccuracy
+  wrong = 0
+  correct = 0
+  tp = 0
+  tn = 0
+  fp = 0
+  fn = 0
+
+  @label = Array.new(@total_line) {0.00}
+  @evaluate = Array.new(@total_line) {0.00}
+  @bayes_part = Array.new(@total_line) {0.00}
+
+  t_file = File.open("./true_label.txt", "r").to_enum
+  e_file = File.open("./p_zh.txt", "r").to_enum
+  b_file = File.open("./decision_label.txt", "r").to_enum
+
+  array_count = 0
+  loop do
+    #access next line in each file with .next
+    line_t = t_file.next.to_f
+    line_e = e_file.next.to_f
+    line_b = b_file.next.to_f
+
+    if line_e != 0.0
+      if line_t == 1.0
+        if line_e == 1.0
+          tp += 1
+        elsif line_e == -1.0
+          fp += 1
+        else
+          puts "what?"
+        end
+      elsif line_t == -1.0
+        if line_e == 1.0
+          fn += 1
+        elsif line_e == -1.0
+          tn += 1
+        else
+          puts "what??"
+        end
+      else
+        puts "what???"
+      end           
+
+      @evaluate[array_count] = line_e
+      @label[array_count] = line_t
+      @bayes_part[array_count] = line_b
+      array_count += 1
+    end
+  end
+
+  # write best results in simple linear to file
+  File.open('true_label_linear.txt', 'w') do |f1|  
+    # use "\n" for two lines of text  
+    @label.each do |line|
+      f1.puts line
+    end
+  end
+
+  File.open('decision_label_linear.txt', 'w') do |f2|  
+    # use "\n" for two lines of text  
+    @evaluate.each do |line|
+      f2.puts line
+    end
+  end
+
+  File.open('decision_label_bayes_part.txt', 'w') do |f3|  
+    # use "\n" for two lines of text  
+    @bayes_part.each do |line|
+      f3.puts line
+    end
+  end
+
+  puts ("#{@label.size} lines")
+  correct = tp + tn
+  wrong = fp + fn
+  @Accuracy = 0.0
+  @Accuracy = correct.to_f * 100 / (correct + wrong)
+  puts "Simple Accuracy #{@Accuracy}%"
+  tpr = tp.to_f / (tp + fn)
+  fpr = fp.to_f / (fp + tn)
+  puts "fp: #{fp} fn: #{fn} tp: #{tp} tn: #{tn}"
+  puts "tpr #{tpr} fpr: #{fpr}"
+
+  print "linear "
+  system('./calc_auc ./true_label_linear.txt ./decision_label_linear.txt')
+
+  print "bayes part accordingly "
+  system('./calc_auc ./true_label_linear.txt ./decision_label_bayes_part.txt')
+end
+
+############################# OUTPUT RESULT #############################
+
+# linear accuracy
+linearAccuracy()
+
+# combine
+combine("./p_zh.txt", "./decision_label.txt")
+
+simple_accuracy()
+
+print "combined "
+system('./calc_auc ./true_label.txt ./decision_label_combined.txt')

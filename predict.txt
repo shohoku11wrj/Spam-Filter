@@ -1,0 +1,8 @@
+{"clip2"=> 
+   {"slow"=>1, "drums"=>0, "classical"=>0, "nice"=>0, "rock"=>1, "fast"=>0},
+"clip3"=>
+   {"slow"=>1, "drums"=>0, "classical"=>1, "nice"=>0, "rock"=>0, "fast"=>0},
+"clip4"=>
+   {"slow"=>0, "drums"=>0, "classical"=>0, "nice"=>1, "rock"=>0, "fast"=>0},
+"clip1"=>
+   {"slow"=>0, "drums"=>1, "classical"=>0, "nice"=>0, "rock"=>1, "fast"=>1}}

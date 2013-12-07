@@ -33,3 +33,8 @@ I have also wirte a small scripts "./roc-plot/draw_roc.rb" to convert <i>probabi
 
 
 Thanks to my teammate Hang Zhang, who has helped in ROC theory and Logistic Regression part during the project.
+
+More detailed project information could be found at ./presentation/ folder:
+[Project Slide Show](https://github.com/shohoku11wrj/Spam-Filter/blob/master/presentation/SpamFilter.pptx)
+[Project Report](https://github.com/shohoku11wrj/Spam-Filter/blob/master/presentation/Project_Report.pdf)
+

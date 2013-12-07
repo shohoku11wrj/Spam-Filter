@@ -30,7 +30,7 @@ I found a powerful tool __ruby-plot__, "./roc-plot/svg_roc_plot.rb", which is an
 
 I have also wirte a small scripts "./roc-plot/draw_roc.rb" to convert <i>probability prediction file & labeld data</i> into two files: X-axis.txt is the false-positive-rate, Y-axis is the true-positive-rate.
 
-
+---
 
 Thanks to my teammate Hang Zhang, who has helped in ROC theory and Logistic Regression part during the project.
 

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print" />
+
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <title>Spam-filter by shohoku11wrj</title>
+  </head>
+
+  <body>
+    <header>
+      <div class="inner">
+        <h1>Spam-filter</h1>
+        <h2>My result of Discovery Challenge 2006, and also a project for CS 559 Machine Learning @ Stevens 2013 Fall</h2>
+        <a href="https://github.com/shohoku11wrj/Spam-Filter" class="button"><small>View project on</small>GitHub</a>
+      </div>
+    </header>
+
+    <div id="content-wrapper">
+      <div class="inner clearfix">
+        <section id="main-content">
+          <h1>
+<a name="spam-filter" class="anchor" href="#spam-filter"><span class="octicon octicon-link"></span></a>Spam-Filter</h1>
+
+<p>My result of <a href="http://www.ecmlpkdd2006.org/challenge.html">Discovery Challenge 2006</a>, and also a project for CS 559 Machine Learning @ Stevens 2013 Fall.</p>
+
+<p>I implemented two basic machine learning technologies learned from the class: <strong>Naive Bayes</strong> and <strong>Logistic Regression</strong>. And made some improvement based on practical implementation. Another improvement I have used is Self-Learning which augments the evaluation data on training set.</p>
+
+<p>Through about two weeks effort, I have achieved the Average AUC as 0.955191 witout enlarge the Self-Learning process. This is higher than the 1st ranked teams at Challenge of that time. They have further achieved higher AUC results after the challenge, the highest one is above 0.98.</p>
+
+<h2>
+<a name="bayesian-filter" class="anchor" href="#bayesian-filter"><span class="octicon octicon-link"></span></a>Bayesian Filter</h2>
+
+<p>bayesianFiltering.rb is my implementation of Bayesian Filter. </p>
+
+<p>The basic idea is learned from <a href="http://www.paulgraham.com/spam.html">A PLAN FOR SPAM</a> by Paul Graham &amp; <a href="http://www.ruanyifeng.com/blog/2011/08/bayesian_inference_part_two.html">Ruan Yi-feng's Chinese translation version</a>. I also have made a bit of improvement by taking frequency into consideration.</p>
+
+<h2>
+<a name="logistic-regression-filter" class="anchor" href="#logistic-regression-filter"><span class="octicon octicon-link"></span></a>Logistic Regression Filter</h2>
+
+<p>logisticRegressionFilter.rb is my implementation of Logistic Regression Filter.</p>
+
+<p>The basic idea is learned form <a href="http://www.ceas.cc/2006/22.pdf">Online discriminative spam filter training</a> by Joshua Goodman &amp; Wen-tau Yih in <a href="http://www.ceas.cc/2006/">CEAS 2006</a>.
+I have improved on it by adding TF-IDF into calculation of weights vector. I have made three attempts on this improvement. The first two were learned from some profressional paper, which had not worked weel. And I got my third appempt inspired by the concepts and reasoning from the first two attempts.</p>
+
+<h2>
+<a name="self-learning" class="anchor" href="#self-learning"><span class="octicon octicon-link"></span></a>Self-Learning</h2>
+
+<p>It was concident that I used the same term "Self-Learning" as the same as what is called in Machine Learning Techniques. And this is just a simply version among many complicated Self-Learning algorithms. However, my idea works fine and is reasonable in Spam Filtering field.</p>
+
+<h2>
+<a name="roc-cruve-drawing" class="anchor" href="#roc-cruve-drawing"><span class="octicon octicon-link"></span></a>ROC Cruve Drawing</h2>
+
+<p>I found a powerful tool <strong>ruby-plot</strong>, "./roc-plot/svg_roc_plot.rb", which is an open source program to draw curves written by Ruby. The authoer is Vorgrimmler from University of Freiburg, Germany.</p>
+
+<p>I have also wirte a small scripts "./roc-plot/draw_roc.rb" to convert <i>probability prediction file &amp; labeld data</i> into two files: X-axis.txt is the false-positive-rate, Y-axis is the true-positive-rate.</p>
+
+<p>Thanks to my teammate Hang Zhang, who has helped in ROC theory and Logistic Regression part during the project.</p>
+
+<p>More detailed project information could be found at "./presentation/" folder:</p>
+
+<p><a href="https://github.com/shohoku11wrj/Spam-Filter/blob/master/presentation/SpamFilter.pptx">Project Slide Show</a></p>
+
+<p><a href="https://github.com/shohoku11wrj/Spam-Filter/blob/master/presentation/Project_Report.pdf">Project Report</a></p>
+        </section>
+
+        <aside id="sidebar">
+          <a href="https://github.com/shohoku11wrj/Spam-Filter/zipball/master" class="button">
+            <small>Download</small>
+            .zip file
+          </a>
+          <a href="https://github.com/shohoku11wrj/Spam-Filter/tarball/master" class="button">
+            <small>Download</small>
+            .tar.gz file
+          </a>
+
+          <p class="repo-owner"><a href="https://github.com/shohoku11wrj/Spam-Filter"></a> is maintained by <a href="https://github.com/shohoku11wrj">shohoku11wrj</a>.</p>
+
+          <p>This page was generated by <a href="pages.github.com">GitHub Pages</a> using the Architect theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.</p>
+        </aside>
+      </div>
+    </div>
+
+  
+  </body>
+</html>

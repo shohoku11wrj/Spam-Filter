@@ -24,7 +24,7 @@ I have improved on it by adding TF-IDF into calculation of weights vector. I hav
 
 It was concident that I used the same term "Self-Learning" as the same as what is called in Machine Learning Techniques. And this is just a simply version among many complicated Self-Learning algorithms. However, my idea works fine and is reasonable in Spam Filtering field.
 
-## ROC Cruve Drawing 
+## ROC Curve Drawing 
 
 I found a powerful tool __ruby-plot__, "./roc-plot/svg_roc_plot.rb", which is an open source program to draw curves written by Ruby. The authoer is Vorgrimmler from University of Freiburg, Germany.
 
